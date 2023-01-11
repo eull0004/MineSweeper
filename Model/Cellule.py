@@ -15,7 +15,13 @@ def isContenuCorrect(contenu: int) -> bool:
             contient = False
     return contient
 
-
+def construireCellule(contenu=0, visible=False) -> dict:
+    cellule = { const.CONTENU: contenu, const.VISIBLE: visible }
+    if isContenuCorrect(contenu) == False:
+        raise ValueError (f"construireCellule : le contenu {contenu} n'est pas correct")
+    elif isinstance(visible, bool) == False:
+        raise TypeError (f"construireCellule: le second parametre ({type(visible)}) n'est pas un booleen")
+    return cellule
 def type_cellule(cell: dict) -> bool:
     """
     Détermine si le paramètre est une cellule correcte ou non
