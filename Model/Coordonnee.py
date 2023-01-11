@@ -3,7 +3,31 @@
 import const
 
 # Définition des coordonnées (ligne, colonne)
+def construireCoordonnee(li: int, co: int) -> tuple:
+    coord = (li, co)
+    if isinstance(li,int) == False or isinstance(co,int) == False:
+        if isinstance(li,int) == False:
+            raise TypeError(f"contruireCoordonnee: le numero de ligne {type(li)} n'est pas un entier")
+        elif isinstance(co,int) == False:
+            raise TypeError(f"contruireCoordonnee: le numero de colonne {type(co)} n'est pas un entier")
+    elif li<0 or co<0:
+        if li<0:
+            raise ValueError(f"contruireCoordonnee: le numero de ligne {li} n'est pas positif")
+        elif co<0:
+            raise ValueError(f"contruireCoordonnee: le numero de colonne {co} n'est pas positif")
+    return coord
 
+def getLigneCoordonnee(coord: tuple) -> int:
+    ligne = coord[0]
+    if isinstance(coord,tuple) == False:
+        raise TypeError("getLigneCoordonne : le parametre n'est pas une coordonnee")
+    return ligne
+
+def getColonneCoordonnee(coord: tuple) -> int:
+    colonne = coord[1]
+    if isinstance(coord,tuple) == False:
+        raise TypeError("getColonneCoordonne : le parametre n'est pas une coordonnee")
+    return colonne
 
 def type_coordonnee(coord: tuple) -> bool:
     """
