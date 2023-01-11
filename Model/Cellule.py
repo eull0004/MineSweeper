@@ -1,11 +1,19 @@
 # Model/Cellule.py
 #
 
-from Model.Constantes import *
+from Model.Constantes import const
 
 #
 # Modélisation d'une cellule de la grille d'un démineur
 #
+def isContenuCorrect(contenu: int) -> bool:
+    contient = True
+    if isinstance(contenu,int) == False:
+        contient = False
+    if contient == True:
+        if contenu != const.ID_MINE and contenu < 0 or contenu > 8:
+            contient = False
+    return contient
 
 
 def type_cellule(cell: dict) -> bool:
