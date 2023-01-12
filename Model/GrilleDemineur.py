@@ -11,6 +11,18 @@ from itertools import filterfalse
 #
 # Il s'agira d'une liste de liste
 
+def construireGrilleDemineur(nl: int, nc: int) -> list:
+    grille = []
+    if nl <= 0 or nc <= 0:
+        raise ValueError(f"construireGrilleDemineur : Le nombre de lignes ({nl}) ou de colonnes ({nc}) est négatif ou nul")
+    elif isinstance(nl, int) == False or isinstance(nc, int) == False:
+        raise TypeError(f"construireGrilleDemineur : le nombre de lignes ({nl}) ou de colonnes ({nc}) n'est pas un entier")
+    for i in range(nl):
+        ligne = []
+        for j in range(nc):
+            ligne.append(construireCellule())
+        grille.append(ligne)
+    return grille
 
 def type_grille_demineur(grille: list) -> bool:
     """
