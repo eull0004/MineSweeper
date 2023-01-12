@@ -51,8 +51,6 @@ def setContenuCellule(cell: dict, contenu2: int) -> None:
         raise ValueError (f"setContenuCellule : la valeur du contenu ({contenu2}) n'est pas correcte")
     elif type_cellule(cell) == False:
         raise TypeError ("setContenuCellule : le premier parametre n'est pas une cellule")
-
-
     return None
 
 def setVisibleCellule(cell: dict, visible2: int) -> None:
