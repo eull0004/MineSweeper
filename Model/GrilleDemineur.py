@@ -62,5 +62,14 @@ def type_grille_demineur(grille: list) -> bool:
     #     if not type_cellule(cell):
     #         return False
     # return True
+def getNbLignesGrilleDemineur(grille: list) -> int:
+    if type_grille_demineur(grille) == False:
+        raise TypeError("getNbLignesGrilleDemineur: le parametre n'est pas une grille")
+    return len(grille)
+
+def getNbColonnesGrilleDemineur(grille: list) -> int:
+    if type_grille_demineur(grille) == False:
+        raise TypeError("getNbColonnesGrilleDemineur: le parametre n'est pas une grille")
+    return len(grille[1])
 
 
