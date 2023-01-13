@@ -75,7 +75,7 @@ def isCoordonneeCorrecte(grille: list, coord: tuple) -> bool:
     contient = True
     if (coord[0]<0 or coord[0]>(getNbLignesGrilleDemineur(grille)-1)) or (coord[1]<0 or coord[1]>(getNbColonnesGrilleDemineur(grille)-1)):
         contient = False
-    if isinstance(grille,list) == False or isinstance(coord,tuple) == False:
+    if type_grille_demineur(grille) == False or isinstance(coord,tuple) == False:
         raise TypeError("isCoordonneeCorrecte : un des parametres n'est pas du bon type")
     return contient
 
@@ -198,3 +198,10 @@ def perduGrilleDemineur(grille: list) -> bool:
             if contientMineGrilleDemineur(grille,(i,j)) == True and isVisibleGrilleDemineur(grille,(i,j)) == True:
                 perdu = True
     return perdu
+
+def reinitialiserGrilleDemineur(grille: list) -> None:
+    for i in range(getNbLignesGrilleDemineur(grille)):
+        for j in range(getNbColonnesGrilleDemineur(grille)):
+            cell = getCelluleGrilleDemineur(grille,(i,j))
+            reinitialiserCellule(cell)
+    return None

@@ -94,3 +94,9 @@ def changeAnnotationCellule(cell: dict) -> None:
     else:
         cell[const.ANNOTATION] = None
     return None
+
+def reinitialiserCellule(cell: dict) -> None:
+    setContenuCellule(cell, 0)
+    setVisibleCellule(cell, False)
+    changeAnnotationCellule(cell)
+    return None
