@@ -183,6 +183,10 @@ def gagneGrilleDemineur(grille: list) -> bool:
                     nbNonMines -= 1
                 else:
                     gagne = False
+            else:
+                if contientMineGrilleDemineur(grille,(i,j)) == True:
+                    if getAnnotationGrilleDemineur(grille,(i,j)) != const.FLAG:
+                        gagne = False
     if nbNonMines != 0:
         gagne = False
     return gagne
