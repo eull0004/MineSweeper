@@ -109,3 +109,19 @@ def setVisibleGrilleDemineur(grille: list, coord: tuple, visible: bool) -> None:
 def contientMineGrilleDemineur(grille: list, coord: tuple) -> bool:
     cell = getCelluleGrilleDemineur(grille, coord)
     return contientMineCellule(cell)
+
+
+def getCoordonneeVoisinsGrilleDemineur(grille: list, coord: tuple) -> list:
+    voisins = []
+    if isinstance(grille, list) == False or isinstance(coord, tuple) == False:
+        raise TypeError("getCoordonneeVoisinsGrilleDemineur : un des paramètres n’est pas du bon type.")
+    if isCoordonneeCorrecte(grille, coord) == False:
+        raise IndexError("getCoordonneeVoisinsGrilleDemineur : la coordonnée n’est pas dans la grille.")
+    for i in range((coord[0]-1),(coord[0]+2)):
+        for j in range((coord[1]-1),(coord[1]+2)):
+            if isCoordonneeCorrecte(grille,(i,j)) == True and (i,j) != coord:
+                voisins.append((i,j))
+            else :
+                j += 1
+    return voisins
+
