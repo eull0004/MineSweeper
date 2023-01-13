@@ -15,8 +15,8 @@ def isContenuCorrect(contenu: int) -> bool:
             contient = False
     return contient
 
-def construireCellule(contenu=0, visible=False) -> dict:
-    cell = { const.CONTENU: contenu, const.VISIBLE: visible }
+def construireCellule(contenu=0, visible=False, annotation=None) -> dict:
+    cell = { const.CONTENU: contenu, const.VISIBLE: visible, const.ANNOTATION: annotation }
     if isContenuCorrect(contenu) == False:
         raise ValueError (f"construireCellule : le contenu {contenu} n'est pas correct")
     elif isinstance(visible, bool) == False:
@@ -68,3 +68,10 @@ def contientMineCellule(cell: dict) -> bool:
     if const.ID_MINE in cell.values():
         res = True
     return res
+
+def isAnnotationCorrecte(annotation: str) -> bool:
+    correct = False
+    if annotation == None or annotation == const.DOUTE or annotation == const.FLAG:
+        correct = True
+    return correct
+
