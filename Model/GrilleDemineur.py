@@ -173,3 +173,17 @@ def getMinesRestantesGrilleDemineur(grille: list) -> int:
                 nb += 1
     return (getNbMinesGrilleDemineur(grille)-nb)
 
+def gagneGrilleDemineur(grille: list) -> bool:
+    gagne = True
+    nbNonMines = (getNbLignesGrilleDemineur(grille)*getNbColonnesGrilleDemineur(grille))-getNbMinesGrilleDemineur(grille)
+    for i in range(getNbLignesGrilleDemineur(grille)):
+        for j in range(getNbColonnesGrilleDemineur(grille)):
+            if isVisibleGrilleDemineur(grille,(i,j)) == True:
+                if contientMineGrilleDemineur(grille,(i,j)) == False:
+                    nbNonMines -= 1
+                else:
+                    gagne = False
+    if nbNonMines != 0:
+        gagne = False
+    return gagne
+
