@@ -136,6 +136,7 @@ def placerMinesGrilleDemineur(grille: list, nb: int, coord: tuple) -> None:
             while coord_Mine == coord or contientMineGrilleDemineur(grille, coord_Mine) == True:
                 coord_Mine = (randint(0,getNbLignesGrilleDemineur(grille)-1),randint(0,getNbColonnesGrilleDemineur(grille)-1))
             setContenuGrilleDemineur(grille,coord_Mine,const.ID_MINE)
+    compterMinesVoisinesGrilleDemineur(grille)
     return None
 
 def compterMinesVoisinesGrilleDemineur(grille: list) -> None:
