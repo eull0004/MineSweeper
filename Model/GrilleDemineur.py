@@ -187,3 +187,10 @@ def gagneGrilleDemineur(grille: list) -> bool:
         gagne = False
     return gagne
 
+def perduGrilleDemineur(grille: list) -> bool:
+    perdu = False
+    for i in range(getNbLignesGrilleDemineur(grille)):
+        for j in range(getNbColonnesGrilleDemineur(grille)):
+            if contientMineGrilleDemineur(grille,(i,j)) == True and isVisibleGrilleDemineur(grille,(i,j)) == True:
+                perdu = True
+    return perdu
