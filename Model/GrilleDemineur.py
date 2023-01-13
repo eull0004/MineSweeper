@@ -161,4 +161,7 @@ def getNbMinesGrilleDemineur(grille:list) -> int:
                 nbMines += 1
     return nbMines
 
+def getAnnotationGrilleDemineur(grille: list, coord: tuple) -> str:
+    cell = getCelluleGrilleDemineur(grille, coord)
+    return getAnnotationCellule(cell)
 
