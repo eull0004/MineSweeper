@@ -224,3 +224,26 @@ def simplifierGrilleDemineur(grille:list, coord: tuple) -> set:
                     simplifierGrilleDemineur(grille,elmnt)
     return coordVisible
 
+def ajouterFlagsGrilleDemineur(grille: list, coord: tuple) -> set:
+    coordFlag = set()
+    visibilite = 0
+    for elmt in getCoordonneeVoisinsGrilleDemineur(grille,coord):
+        if isVisibleGrilleDemineur(grille,elmt) == False:
+            visibilite += 1
+    if getContenuGrilleDemineur(grille,coord) == visibilite:
+        for elmnt in getCoordonneeVoisinsGrilleDemineur(grille,coord):
+            if isVisibleGrilleDemineur(grille,elmnt) == False:
+                changeAnnotationCellule(getCelluleGrilleDemineur(grille,elmnt))
+                changeAnnotationCellule(getCelluleGrilleDemineur(grille, elmnt))
+                coordFlag.add(elmnt)
+    return coordFlag
+
+def simplifierToutGrilleDemineur(grille: list) -> tuple:
+    visible = set()
+    flag = set()
+    while perduGrilleDemineur(grille) == False and gagneGrilleDemineur(grille) == False:
+        for i in range(getNbLignesGrilleDemineur(grille)):
+            for j in range(getNbColonnesGrilleDemineur(grille)):
+                visible.add(simplifierGrilleDemineur(grille,(i,j)))
+                flag.add(ajouterFlagsGrilleDemineur(grille,(i,j)))
+    return (visible,flag)
