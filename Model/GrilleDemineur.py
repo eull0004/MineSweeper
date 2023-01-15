@@ -1,4 +1,5 @@
 # GrilleDemineur.py
+import pygame
 
 from Model.Cellule import *
 from Model.Coordonnee import *
@@ -205,3 +206,21 @@ def reinitialiserGrilleDemineur(grille: list) -> None:
             cell = getCelluleGrilleDemineur(grille,(i,j))
             reinitialiserCellule(cell)
     return None
+
+
+
+def simplifierGrilleDemineur(grille:list, coord: tuple) -> set:
+    coordVisible = set()
+    if isVisibleGrilleDemineur(grille,coord) == True:
+        drapeaux = 0
+        for elmt in getCoordonneeVoisinsGrilleDemineur(grille,coord):
+            if getAnnotationGrilleDemineur(grille,elmt) == const.FLAG:
+                drapeaux += 1
+        if drapeaux == getContenuGrilleDemineur(grille,coord):
+            for elmnt in getCoordonneeVoisinsGrilleDemineur(grille,coord):
+                if getAnnotationGrilleDemineur(grille,elmnt) != const.FLAG and isVisibleGrilleDemineur(grille,elmnt) == False:
+                    setVisibleGrilleDemineur(grille,elmnt,True)
+                    coordVisible.add(elmnt)
+                    simplifierGrilleDemineur(grille,elmnt)
+    return coordVisible
+
